@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>CALMP LEAGUE TEMP 7</title>
+  <style>
+    body { margin: 0; padding: 0; display: flex; font-family: 'Arial', sans-serif; }
+    .field { position: relative; width: 60%; height: 100vh; background-color: #4CAF50; overflow: hidden; }
+    .pitch { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+    .sidebar { background: #FFD700; width: 40%; padding: 20px; color: black; overflow-y: auto; }
+    .player { position: absolute; padding: 5px 10px; background: white; border: 2px solid black; border-radius: 5px; cursor: move; text-align: center; font-weight: bold; user-select: none; }
+    h1 { font-size: 24px; margin-bottom: 10px; }
+    .position-block { margin-bottom: 15px; }
+    .position-block label { font-weight: bold; display: block; margin-bottom: 5px; }
+    .position-block select { width: 100%; padding: 5px; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+<div class="field" id="field">
+  <!-- Pitch lines as SVG without halfway line -->
+  <svg class="pitch" viewBox="0 0 600 800" preserveAspectRatio="none">
+    <rect x="0" y="0" width="600" height="800" fill="none" stroke="white" stroke-width="4"/>
+    <!-- Center circle -->
+    <circle cx="300" cy="400" r="80" fill="none" stroke="white" stroke-width="2"/>
+    <circle cx="300" cy="400" r="4" fill="white"/>
+    <rect x="100" y="0" width="400" height="160" fill="none" stroke="white" stroke-width="2"/>
+    <rect x="100" y="640" width="400" height="160" fill="none" stroke="white" stroke-width="2"/>
+    <circle cx="300" cy="120" r="4" fill="white"/>
+    <circle cx="300" cy="680" r="4" fill="white"/>
+    <rect x="225" y="0" width="150" height="60" fill="none" stroke="white" stroke-width="2"/>
+    <rect x="225" y="740" width="150" height="60" fill="none" stroke="white" stroke-width="2"/>
+  </svg>
+
+  <div class="player" id="portero" style="top:90%; left:45%;">PORTERO</div>
+  <div class="player" id="central1" style="top:75%; left:30%;">CENTRAL 1</div>
+  <div class="player" id="central2" style="top:75%; left:60%;">CENTRAL 2</div>
+  <div class="player" id="lateralI" style="top:70%; left:10%;">LATERAL I</div>
+  <div class="player" id="lateralD" style="top:70%; left:80%;">LATERAL D</div>
+  <div class="player" id="mediocampo1" style="top:50%; left:30%;">MEDIOCAMPO 1</div>
+  <div class="player" id="mediocampo2" style="top:50%; left:60%;">MEDIOCAMPO 2</div>
+  <div class="player" id="mediocampo3" style="top:40%; left:20%;">MEDIOCAMPO 3</div>
+  <div class="player" id="mediocampo4" style="top:40%; left:70%;">MEDIOCAMPO 4</div>
+  <div class="player" id="delantero1" style="top:20%; left:30%;">DELANTERO 1</div>
+  <div class="player" id="delantero2" style="top:20%; left:60%;">DELANTERO 2</div>
+</div>
+
+<div class="sidebar">
+  <h1>TU EQUIPO EN LA CALMP LEAGUE</h1>
+  <p>Organiza tu 11 ideal antes de los fichajes de la séptima temporada la mejor liga de PES 6 Online</p>
+
+  <!-- Portero -->
+  <div class="position-block">
+    <label for="select-portero">Portero</label>
+    <select id="select-portero">
+      <option value="">--Seleccionar--</option>
+      <option>Yashin</option><option>Van Der Sar</option><option>Cech</option><option>Schmeichel</option>
+      <option>Buffon</option><option>Zoff</option><option>Taffarel</option><option>Casillas</option>
+      <option>Kanh</option><option>Chilavert</option><option>Dida</option><option>Shilton</option>
+      <option>Pumpido</option><option>Julio Cesar</option><option>Illgner</option><option>Banks</option>
+      <option>Filliol</option><option>Seaman</option><option>Campos</option><option>Higuita</option>
+      <option>Lehmann</option><option>Barthez</option><option>Courtois</option><option>Donnarumma</option>
+      <option>Maignan</option><option>Ter Stegen</option><option>Ederson</option><option>Alisson Becker</option>
+      <option>Oblak</option><option>Keylor Navas</option>
+    </select>
+  </div>
+
+  <!-- Central 1 -->
+  <div class="position-block">
+    <label for="select-central1">Central 1</label>
+    <select id="select-central1">
+      <option value="">--Seleccionar--</option>
+      <option>F. Cannavaro (CT)</option><option>Baresi (CT)</option><option>Sergio Ramos (LD)</option><option>Maldini(CT)(LD)</option>
+      <option>Lucio (CT)</option><option>Materazzi (CT)</option><option>Evra (LI)</option><option>Maicon (LD)</option>
+      <option>Passarella</option><option>Thuram (CT)(LD)</option><option>Nesta (CT)</option><option>Michel Salgado (LD)</option>
+      <option>Terry (CT)</option><option>Gallas (CT)(LD)</option><option>Cafu (LD)</option><option>Roberto Carlos (LI)</option>
+      <option>Pepe (CT)(LD)</option><option>Chiellini (LI)</option><option>Samuel (CT)</option><option>Riise (LD)</option>
+      <option>Ferdinand (CT)</option><option>Zambrotta (LD)</option><option>Ashley Cole (LI)</option><option>Kohler (CT)</option>
+      <option>Desailly (CT)</option><option>Junior (LD)</option><option>Everaldo (LI)</option><option>Tresor (CT)</option>
+      <option>Iván Córdoba (CT)(LD)</option><option>Oscar Ruggeri (CT)(LD)</option><option>Hierro (CT) (MCD)</option><option>Ronald Koeman (CT)</option>
+      <option>Van Bronckhorst (LI)</option><option>G. Neville (LD)</option><option>Blanc (CT)</option><option>Abidal (CT)(LI)</option>
+      <option>Carlos Alberto (LD)</option><option>Márquez (CT)</option><option>Moore (CT)(LD)</option><option>Lahm (LD)</option>
+      <option>Javier Zanetti (LD)</option><option>Lizarazu (LI)</option><option>Juan (CT)</option><option>Yepes (CT)(LI)</option>
+      <option>Sensini (C)</option><option>Heinze (CT)(LI)</option><option>Carragher (CT)(LD)</option><option>Carvalho (CT)</option>
+      <option>H. Chumpitaz (CT)(LD)</option><option>Tarantini (LD)</option><option>Puyol (CT)</option><option>F. De Boer (CT)</option>
+      <option>Costacurta (CT)(LD)</option><option>Carrick (CT)</option><option>Roque Junior (CT)</option><option>Sagnol (LD)</option>
+      <option>Ronald Araújo (CT)</option><option>William Saliba (CT)</option><option>Matthijs de Ligt (CT)</option><option>Rudiger (CT)</option>
+      <option>Stones (CT)</option><option>Lisandro Martínez (CT)</option><option>Konaté (CT)</option><option>Koundé (CT)</option>
+      <option>Rúben Días (CT)</option><option>Virgil Van Dijk (CT)</option><option>Marquinhos (CT)</option><option>Alaba (LI)</option>
+      <option>Cancelo (LD)</option><option>Trent A. Arnold (LD)</option><option>Alphonso Davies (LI)</option><option>Theo Hernández (LI)</option>
+      <option>Hakimi (LI)</option><option>Robertson (LI)</option><option>Luke Shaw (LI)</option><option>Ferland Mendy (LI)</option>
+      <option>Aké (LI)</option><option>Elias Figueroa (Real Cosmos)</option><option>Beckenbauer (Furros Utd)</option>
+    </select>
+  </div>
+
+  <!-- Central 2 -->
+  <div class="position-block">
+    <label for="select-central2">Central 2</label>
+    <select id="select-central2">
+      <option value="">--Seleccionar--</option>
+      <!-- mismas opciones que Central 1 -->
+      <option>F. Cannavaro (CT)</option><option>Baresi (CT)</option><option>Sergio Ramos (LD)</option><option>Maldini(CT)(LD)</option>
+      <option>Lucio (CT)</option><option>Materazzi (CT)</option><option>Evra (LI)</option><option>Maicon (LD)</option>
+      <option>Passarella</option><option>Thuram (CT)(LD)</option><option>Nesta (CT)</option><option>Michel Salgado (LD)</option>
+      <option>Terry (CT)</option><option>Gallas (CT)(LD)</option><option>Cafu (LD)</option><option>Roberto Carlos (LI)</option>
+      <option>Pepe (CT)(LD)</option><option>Chiellini (LI)</option><option>Samuel (CT)</option><option>Riise (LD)</option>
+      <option>Ferdinand (CT)</option><option>Zambrotta (LD)</option><option>Ashley Cole (LI)</option><option>Kohler (CT)</option>
+      <option>Desailly (CT)</option><option>Junior (LD)</option><option>Everaldo (LI)</option><option>Tresor (CT)</option>
+      <option>Iván Córdoba (CT)(LD)</option><option>Oscar Ruggeri (CT)(LD)</option><option>Hierro (CT) (MCD)</option><option>Ronald Koeman (CT)</option>
+      <option>Van Bronckhorst (LI)</option><option>G. Neville (LD)</option><option>Blanc (CT)</option><option>Abidal (CT)(LI)</option>
+      <option>Carlos Alberto (LD)</option><option>Márquez (CT)</option><option>Moore (CT)(LD)</option><option>Lahm (LD)</option>
+      <option>Javier Zanetti (LD)</option><option>Lizarazu (LI)</option><option>Juan (CT)</option><option>Yepes (CT)(LI)</option>
+      <option>Sensini (C)</option><option>Heinze (CT)(LI)</option><option>Carragher (CT)(LD)</option><option>Carvalho (CT)</option>
+      <option>H. Chumpitaz (CT)(LD)</option><option>Tarantini (LD)</option><option>Puyol (CT)</option><option>F. De Boer (CT)</option>
+      <option>Costacurta (CT)(LD)</option><option>Carrick (CT)</option><option>Roque Junior (CT)</option><option>Sagnol (LD)</option>
+      <option>Ronald Araújo (CT)</option><option>William Saliba (CT)</option><option>Matthijs de Ligt (CT)</option><option>Rudiger (CT)</option>
+      <option>Stones (CT)</option><option>Lisandro Martínez (CT)</option><option>Konaté (CT)</option><option>Koundé (CT)</option>
+      <option>Rúben Días (CT)</option><option>Virgil Van Dijk (CT)</option><option>Marquinhos (CT)</option><option>Alaba (LI)</option>
+      <option>Cancelo (LD)</option><option>Trent A. Arnold (LD)</option><option>Alphonso Davies (LI)</option><option>Theo Hernández (LI)</option>
+      <option>Hakimi (LI)</option><option>Robertson (LI)</option><option>Luke Shaw (LI)</option><option>Ferland Mendy (LI)</option>
+      <option>Aké (LI)</option><option>Elias Figueroa (Real Cosmos)</option><option>Beckenbauer (Furros Utd)</option>
+    </select>
+  </div>
+
+  <!-- Lateral I -->
+  <div class="position-block">
+    <label for="select-lateralI">Lateral I</label>
+    <select id="select-lateralI">
+      <option value="">--Seleccionar--</option>
+      <!-- mismas opciones que Central 1 -->
+      <option>F. Cannavaro (CT)</option><option>Baresi (CT)</option><option>Sergio Ramos (LD)</option><option>Maldini(CT)(LD)</option>
+      <option>Lucio (CT)</option><option>Materazzi (CT)</option><option>Evra (LI)</option><option>Maicon (LD)</option>
+      <option>Passarella</option><option>Thuram (CT)(LD)</option><option>Nesta (CT)</option><option>Michel Salgado (LD)</option>
+      <option>Terry (CT)</option><option>Gallas (CT)(LD)</option><option>Cafu (LD)</option><option>Roberto Carlos (LI)</option>
+      <option>Pepe (CT)(LD)</option><option>Chiellini (LI)</option><option>Samuel (CT)</option><option>Riise (LD)</option>
+      <option>Ferdinand (CT)</option><option>Zambrotta (LD)</option><option>Ashley Cole (LI)</option><option>Kohler (CT)</option>
+      <option>Desailly (CT)</option><option>Junior (LD)</option><option>Everaldo (LI)</option><option>Tresor (CT)</option>
+      <option>Iván Córdoba (CT)(LD)</option><option>Oscar Ruggeri (CT)(LD)</option><option>Hierro (CT) (MCD)</option><option>Ronald Koeman (CT)</option>
+      <option>Van Bronckhorst (LI)</option><option>G. Neville (LD)</option><option>Blanc (CT)</option><option>Abidal (CT)(LI)</option>
+      <option>Carlos Alberto (LD)</option><option>Márquez (CT)</option><option>Moore (CT)(LD)</option><option>Lahm (LD)</option>
+      <option>Javier Zanetti (LD)</option><option>Lizarazu (LI)</option><option>Juan (CT)</option><option>Yepes (CT)(LI)</option>
+      <option>Sensini (C)</option><option>Heinze (CT)(LI)</option><option>Carragher (CT)(LD)</option><option>Carvalho (CT)</option>
+      <option>H. Chumpitaz (CT)(LD)</option><option>Tarantini (LD)</option><option>Puyol (CT)</option><option>F. De Boer (CT)</option>
+      <option>Costacurta (CT)(LD)</option><option>Carrick (CT)</option><option>Roque Junior (CT)</option><option>Sagnol (LD)</option>
+      <option>Ronald Araújo (CT)</option><option>William Saliba (CT)</option><option>Matthijs de Ligt (CT)</option><option>Rudiger (CT)</option>
+      <option>Stones (CT)</option><option>Lisandro Martínez (CT)</option><option>Konaté (CT)</option><option>Koundé (CT)</option>
+      <option>Rúben Días (CT)</option><option>Virgil Van Dijk (CT)</option><option>Marquinhos (CT)</option><option>Alaba (LI)</option>
+      <option>Cancelo (LD)</option><option>Trent A. Arnold (LD)</option><option>Alphonso Davies (LI)</option><option>Theo Hernández (LI)</option>
+      <option>Hakimi (LI)</option><option>Robertson (LI)</option><option>Luke Shaw (LI)</option><option>Ferland Mendy (LI)</option>
+      <option>Aké (LI)</option><option>Elias Figueroa (Real Cosmos)</option><option>Beckenbauer (Furros Utd)</option>
+    </select>
+  </div>
+
+  <!-- Lateral D -->
+  <div class="position-block">
+    <label for="select-lateralD">Lateral D</label>
+    <select id="select-lateralD">
+      <option value="">--Seleccionar--</option>
+      <!-- mismas opciones que Central 1 -->
+      <option>F. Cannavaro (CT)</option><option>Baresi (CT)</option><option>Sergio Ramos (LD)</option><option>Maldini(CT)(LD)</option>
+      <option>Lucio (CT)</option><option>Materazzi (CT)</option><option>Evra (LI)</option><option>Maicon (LD)</option>
+      <option>Passarella</option><option>Thuram (CT)(LD)</option><option>Nesta (CT)</option><option>Michel Salgado (LD)</option>
+      <option>Terry (CT)</option><option>Gallas (CT)(LD)</option><option>Cafu (LD)</option><option>Roberto Carlos (LI)</option>
+      <option>Pepe (CT)(LD)</option><option>Chiellini (LI)</option><option>Samuel (CT)</option><option>Riise (LD)</option>
+      <option>Ferdinand (CT)</option><option>Zambrotta (LD)</option><option>Ashley Cole (LI)</option><option>Kohler (CT)</option>
+      <option>Desailly (CT)</option><option>Junior (LD)</option><option>Everaldo (LI)</option><option>Tresor (CT)</option>
+      <option>Iván Córdoba (CT)(LD)</option><option>Oscar Ruggeri (CT)(LD)</option><option>Hierro (CT)(MCD)</option><option>Ronald Koeman (CT)</option>
+      <option>Van Bronckhorst (LI)</option><option>G. Neville (LD)</option><option>Blanc (CT)</option><option>Abidal (CT)(LI)</option>
+      <option>Carlos Alberto (LD)</option><option>Márquez (CT)</option><option>Moore (CT)(LD)</option><option>Lahm (LD)</option>
+      <option>Javier Zanetti (LD)</option><option>Lizarazu (LI)</option><option>Juan (CT)</option><option>Yepes (CT)(LI)</option>
+      <option>Sensini (C)</option><option>Heinze (CT)(LI)</option><option>Carragher (CT)(LD)</option><option>Carvalho (CT)</option>
+      <option>H. Chumpitaz (CT)(LD)</option><option>Tarantini (LD)</option><option>Puyol (CT)</option><option>F. De Boer (CT)</option>
+      <option>Costacurta (CT)(LD)</option><option>Carrick (CT)</option><option>Roque Junior (CT)</option><option>Sagnol (LD)</option>
+      <option>Ronald Araújo (CT)</option><option>William Saliba (CT)</option><option>Matthijs de Ligt (CT)</option><option>Rudiger (CT)</option>
+      <option>Stones (CT)</option><option>Lisandro Martínez (CT)</option><option>Konaté (CT)</option><option>Koundé (CT)</option>
+      <option>Rúben Días (CT)</option><option>Virgil Van Dijk (CT)</option><option>Marquinhos (CT)</option><option>Alaba (LI)</option>
+      <option>Cancelo (LD)</option><option>Trent A. Arnold (LD)</option><option>Alphonso Davies (LI)</option><option>Theo Hernández (LI)</option>
+      <option>Hakimi (LI)</option><option>Robertson (LI)</option><option>Luke Shaw (LI)</option><option>Ferland Mendy (LI)</option>
+      <option>Aké (LI)</option><option>Elias Figueroa (Real Cosmos)</option><option>Beckenbauer (Furros Utd)</option>
+    </select>
+  </div>
+
+  <!-- Mediocampo 1 -->
+  <div class="position-block">
+    <label for="select-mediocampo1">Mediocampo 1</label>
+    <select id="select-mediocampo1">
+      <option value="">--Seleccionar--</option>
+      <option>Gerrard</option><option>Gullit</option><option>Cesc Fabregas</option><option>Hagi</option><option>Schweinsteiger</option><option>Cambiasso</option><option>Cryuff</option><option>Xabi Alonso</option><option>Scholes</option><option>Zico</option><option>Francescoli</option><option>Makelele</option><option>Guti</option><option>Messi</option><option>Seedorf</option><option>Rosicky</option><option>Beckham</option><option>Figo</option><option>Vieira</option><option>Essien</option><option>Socrates</option><option>Nedved</option><option>Ribery</option><option>Veron</option><option>Guardiola</option><option>Rivelino</option><option>Gascoigne</option><option>Sorin</option><option>Iniesta</option><option>Rijkaard</option><option>Pirlo</option><option>Roy Keane</option><option>Lampard</option><option>Platini</option><option>Aimar</option><option>Ballack</option><option>Matthaus</option><option>Zidane</option><option>Gatusso</option><option>Camoranesi</option><option>Riquelme</option><option>Xavi</option><option>Giggs</option><option>Dejan Stankovic</option><option>Ze Roberto</option><option>Van Bommel</option><option>Frings</option><option>Nakamura</option><option>Valderrama</option><option>Yaya Toure</option><option>Juninho</option><option>Rodri</option><option>Rice</option><option>Tchouameni</option><option>Enzo Fernández</option><option>Frenkie de Jong</option><option>Bellingham</option><option>Odegaard</option><option>Musiala</option><option>Gravenberch</option><option>Alexis Mac Allister</option><option>De Bruyne</option><option>Camavinga</option><option>Kimmich</option><option>Modric</option><option>Xhaka</option><option>Barella</option><option>Valverde</option><option>Bernardo Silva</option><option>Goretzka</option><option>Pedri</option><option>Maradona (METRALLETO FC)</option><option>Ronaldinho (Rock N' Ball FC)</option><option>Kaká (Athheletixx FC)
+    </select>
+  </div>
+
+  <!-- Mediocampo 2 -->
+  <div class="position-block">
+    <label for="select-mediocampo2">Mediocampo 2</label>
+    <select id="select-mediocampo2">
+      <option value="">--Seleccionar--</option>
+      <option>Gerrard</option><option>Gullit</option><option>Cesc Fabregas</option><option>Hagi</option><option>Schweinsteiger</option><option>Cambiasso</option><option>Cryuff</option><option>Xabi Alonso</option><option>Scholes</option><option>Zico</option><option>Francescoli</option><option>Makelele</option><option>Guti</option><option>Messi</option><option>Seedorf</option><option>Rosicky</option><option>Beckham</option><option>Figo</option><option>Vieira</option><option>Essien</option><option>Socrates</option><option>Nedved</option><option>Ribery</option><option>Veron</option><option>Guardiola</option><option>Rivelino</option><option>Gascoigne</option><option>Sorin</option><option>Iniesta</option><option>Rijkaard</option><option>Pirlo</option><option>Roy Keane</option><option>Lampard</option><option>Platini</option><option>Aimar</option><option>Ballack</option><option>Matthaus</option><option>Zidane</option><option>Gatusso</option><option>Camoranesi</option><option>Riquelme</option><option>Xavi</option><option>Giggs</option><option>Dejan Stankovic</option><option>Ze Roberto</option><option>Van Bommel</option><option>Frings</option><option>Nakamura</option><option>Valderrama</option><option>Yaya Toure</option><option>Juninho</option><option>Rodri</option><option>Rice</option><option>Tchouameni</option><option>Enzo Fernández</option><option>Frenkie de Jong</option><option>Bellingham</option><option>Odegaard</option><option>Musiala</option><option>Gravenberch</option><option>Alexis Mac Allister</option><option>De Bruyne</option><option>Camavinga</option><option>Kimmich</option><option>Modric</option><option>Xhaka</option><option>Barella</option><option>Valverde</option><option>Bernardo Silva</option><option>Goretzka</option><option>Pedri</option><option>Maradona (METRALLETO FC)</option><option>Ronaldinho (Rock N' Ball FC)</option><option>Kaká (Athheletixx FC)
+    </select>
+</div>
+	
+	<!-- Mediocampo 3 -->
+  <div class="position-block">
+    <label for="select-mediocampo3">Mediocampo 3</label>
+    <select id="select-mediocampo3">
+      <option value="">--Seleccionar--</option>
+      <option>Gerrard</option><option>Gullit</option><option>Cesc Fabregas</option><option>Hagi</option><option>Schweinsteiger</option><option>Cambiasso</option><option>Cryuff</option><option>Xabi Alonso</option><option>Scholes</option><option>Zico</option><option>Francescoli</option><option>Makelele</option><option>Guti</option><option>Messi</option><option>Seedorf</option><option>Rosicky</option><option>Beckham</option><option>Figo</option><option>Vieira</option><option>Essien</option><option>Socrates</option><option>Nedved</option><option>Ribery</option><option>Veron</option><option>Guardiola</option><option>Rivelino</option><option>Gascoigne</option><option>Sorin</option><option>Iniesta</option><option>Rijkaard</option><option>Pirlo</option><option>Roy Keane</option><option>Lampard</option><option>Platini</option><option>Aimar</option><option>Ballack</option><option>Matthaus</option><option>Zidane</option><option>Gatusso</option><option>Camoranesi</option><option>Riquelme</option><option>Xavi</option><option>Giggs</option><option>Dejan Stankovic</option><option>Ze Roberto</option><option>Van Bommel</option><option>Frings</option><option>Nakamura</option><option>Valderrama</option><option>Yaya Toure</option><option>Juninho</option><option>Rodri</option><option>Rice</option><option>Tchouameni</option><option>Enzo Fernández</option><option>Frenkie de Jong</option><option>Bellingham</option><option>Odegaard</option><option>Musiala</option><option>Gravenberch</option><option>Alexis Mac Allister</option><option>De Bruyne</option><option>Camavinga</option><option>Kimmich</option><option>Modric</option><option>Xhaka</option><option>Barella</option><option>Valverde</option><option>Bernardo Silva</option><option>Goretzka</option><option>Pedri</option><option>Maradona (METRALLETO FC)</option><option>Ronaldinho (Rock N' Ball FC)</option><option>Kaká (Athheletixx FC)
+    </select>
+</div>
+
+<!-- Mediocampo 4 -->
+  <div class="position-block">
+    <label for="select-mediocampo4">Mediocampo 4</label>
+    <select id="select-mediocampo4">
+      <option value="">--Seleccionar--</option>
+      <option>Gerrard</option><option>Gullit</option><option>Cesc Fabregas</option><option>Hagi</option><option>Schweinsteiger</option><option>Cambiasso</option><option>Cryuff</option><option>Xabi Alonso</option><option>Scholes</option><option>Zico</option><option>Francescoli</option><option>Makelele</option><option>Guti</option><option>Messi</option><option>Seedorf</option><option>Rosicky</option><option>Beckham</option><option>Figo</option><option>Vieira</option><option>Essien</option><option>Socrates</option><option>Nedved</option><option>Ribery</option><option>Veron</option><option>Guardiola</option><option>Rivelino</option><option>Gascoigne</option><option>Sorin</option><option>Iniesta</option><option>Rijkaard</option><option>Pirlo</option><option>Roy Keane</option><option>Lampard</option><option>Platini</option><option>Aimar</option><option>Ballack</option><option>Matthaus</option><option>Zidane</option><option>Gatusso</option><option>Camoranesi</option><option>Riquelme</option><option>Xavi</option><option>Giggs</option><option>Dejan Stankovic</option><option>Ze Roberto</option><option>Van Bommel</option><option>Frings</option><option>Nakamura</option><option>Valderrama</option><option>Yaya Toure</option><option>Juninho</option><option>Rodri</option><option>Rice</option><option>Tchouameni</option><option>Enzo Fernández</option><option>Frenkie de Jong</option><option>Bellingham</option><option>Odegaard</option><option>Musiala</option><option>Gravenberch</option><option>Alexis Mac Allister</option><option>De Bruyne</option><option>Camavinga</option><option>Kimmich</option><option>Modric</option><option>Xhaka</option><option>Barella</option><option>Valverde</option><option>Bernardo Silva</option><option>Goretzka</option><option>Pedri</option><option>Maradona (METRALLETO FC)</option><option>Ronaldinho (Rock N' Ball FC)</option><option>Kaká (Athheletixx FC)
+    </select>
+</div>
+
+<!-- Delantero 1-->
+  <div class="position-block">
+    <label for="select-delantero1">Delantero 1</label>
+    <select id="select-delantero1">
+      <option value="">--Seleccionar--</option>
+	  <option>Puskas</option>
+	  <option>Del Piero</option>
+      <option>Ronaldo Nazario</option>
+      <option>C. Ronaldo</option>
+      <option>Butragueño</option>
+      <option>Totti</option>
+      <option>Klose</option>
+      <option>Di Stefano</option>
+      <option>Rooney</option>
+      <option>Ibrahimovic</option>
+      <option>Romario</option>
+      <option>Batistuta</option>
+      <option>Roberto Baggio</option>
+      <option>Robinho</option>
+      <option>Hugo Sanchez</option>
+      <option>Bergkamp</option>
+      <option>Drogba</option>
+      <option>Garrincha</option>
+      <option>Shearer</option>
+      <option>Henry</option>
+      <option>Best</option>
+      <option>Caniggia</option>
+      <option>Kempes</option>
+      <option>Robben</option>
+      <option>Klinsmann</option>
+      <option>Zamorano</option>
+      <option>Martins</option>
+      <option>Ian Rush</option>
+      <option>Cantona</option>
+      <option>Owen</option>
+      <option>Asprilla</option>
+      <option>Weah</option>
+      <option>Voller</option>
+      <option>Trezeguet</option>
+      <option>Crouch</option>
+      <option>Shevchenko</option>
+      <option>Podolski</option>
+      <option>Van Persie</option>
+      <option>Suker</option>
+      <option>Mbappé</option>
+      <option>Haaland</option>
+      <option>Vinicius Junior</option>
+      <option>L. Martínez</option>
+      <option>M. Salah</option>
+      <option>Osimhen</option>
+      <option>J.Álvarez</option>
+      <option>Lewandowski</option>
+      <option>Yamal</option>
+      <option>Harry Kane</option>
+      <option>Mané</option>
+      <option>Palmer</option>
+      <option>Dembelé</option>
+      <option>Isak</option>
+      <option>Raphinha</option>
+      <option>L.Díaz</option>
+      <option>Gakpo</option>
+      <option>Sané</option>
+      <option>Havertz</option>
+      <option>Saka</option>
+      <option>Kvaratskhelia</option>
+      <option>Kolo Muani</option>
+      <option>Leao</option>
+      <option>Foden</option>
+      <option>Neymar 2021</option>
+      <option>Bale 2014</option>
+	  <option>Van Basten (Vásquez 01 FC)</option>
+      <option>Eusebio (Halcones FC)</option>
+      <option>Adriano (Fénix FC)</option>
+      <option>Pelé (Gallina Negra)</option>
+      <option>Eto'o (Zerberus FC)</option>
+    </select>
+</div>
+
+<!-- Delantero 2-->
+  <div class="position-block">
+    <label for="select-delantero2">Delantero 2</label>
+    <select id="select-delantero2">
+      <option value="">--Seleccionar--</option>
+	  <option>Puskas</option>
+	  <option>Del Piero</option>
+      <option>Ronaldo Nazario</option>
+      <option>C. Ronaldo</option>
+      <option>Butragueño</option>
+      <option>Totti</option>
+      <option>Klose</option>
+      <option>Di Stefano</option>
+      <option>Rooney</option>
+      <option>Ibrahimovic</option>
+      <option>Romario</option>
+      <option>Batistuta</option>
+      <option>Roberto Baggio</option>
+      <option>Robinho</option>
+      <option>Hugo Sanchez</option>
+      <option>Bergkamp</option>
+      <option>Drogba</option>
+      <option>Garrincha</option>
+      <option>Shearer</option>
+      <option>Henry</option>
+      <option>Best</option>
+      <option>Caniggia</option>
+      <option>Kempes</option>
+      <option>Robben</option>
+      <option>Klinsmann</option>
+      <option>Zamorano</option>
+      <option>Martins</option>
+      <option>Ian Rush</option>
+      <option>Cantona</option>
+      <option>Owen</option>
+      <option>Asprilla</option>
+      <option>Weah</option>
+      <option>Voller</option>
+      <option>Trezeguet</option>
+      <option>Crouch</option>
+      <option>Shevchenko</option>
+      <option>Podolski</option>
+      <option>Van Persie</option>
+      <option>Suker</option>
+      <option>Mbappé</option>
+      <option>Haaland</option>
+      <option>Vinicius Junior</option>
+      <option>L. Martínez</option>
+      <option>M. Salah</option>
+      <option>Osimhen</option>
+      <option>J.Álvarez</option>
+      <option>Lewandowski</option>
+      <option>Yamal</option>
+      <option>Harry Kane</option>
+      <option>Mané</option>
+      <option>Palmer</option>
+      <option>Dembelé</option>
+      <option>Isak</option>
+      <option>Raphinha</option>
+      <option>L.Díaz</option>
+      <option>Gakpo</option>
+      <option>Sané</option>
+      <option>Havertz</option>
+      <option>Saka</option>
+      <option>Kvaratskhelia</option>
+      <option>Kolo Muani</option>
+      <option>Leao</option>
+      <option>Foden</option>
+      <option>Neymar 2021</option>
+      <option>Bale 2014</option>
+	  <option>Van Basten (Vásquez 01 FC)</option>
+      <option>Eusebio (Halcones FC)</option>
+      <option>Adriano (Fénix FC)</option>
+      <option>Pelé (Gallina Negra)</option>
+      <option>Eto'o (Zerberus FC)</option>
+    </select>
+</div>
+
+<script>
+  let dragged = null;
+  document.querySelectorAll('.player').forEach(el => {
+    el.addEventListener('mousedown', () => dragged = el);
+  });
+  document.addEventListener('mouseup', () => dragged = null);
+  document.addEventListener('mousemove', e => {
+    if (dragged) {
+      dragged.style.left = (e.pageX - dragged.offsetWidth/2) + 'px';
+      dragged.style.top  = (e.pageY - dragged.offsetHeight/2) + 'px';
+    }
+  });
+
+  ['portero','central1','central2','lateralI','lateralD','mediocampo1','mediocampo2'
+  ,'mediocampo3','mediocampo4','delantero1','delantero2'].forEach(pos => {
+    const sel = document.getElementById('select-'+pos);
+    const div = document.getElementById(pos);
+    if (sel && div) sel.addEventListener('change', () => { div.textContent = sel.value || div.id.toUpperCase(); });
+  });
+</script>
+
+</body>
+</html>
